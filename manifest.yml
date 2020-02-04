@@ -1,0 +1,6 @@
+---
+applications:
+- name: rabbitmq-mvc-dotnetcore
+  memory: 256M
+  instances: 1
+  path: C:/Publish/rabbitmq-mvc-dotnetcore
