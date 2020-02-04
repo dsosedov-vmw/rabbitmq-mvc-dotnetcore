@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RabbitMQ.Client;
 using Web.Models;
 
 namespace Web.Controllers
@@ -18,8 +16,27 @@ namespace Web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index([FromServices] ConnectionFactory connectionFactory)
         {
+            using (var connection = connectionFactory.CreateConnection())
+            {
+                using (var channel = connection.CreateModel())
+                {
+                    if (channel.IsOpen)
+                    {
+                        _logger.LogInformation("Connection established successfully");
+                    }
+
+                    //CreateQueue(channel);
+                    //var body = Encoding.UTF8.GetBytes("a message");
+                    //channel.BasicPublish(exchange: "",
+                    //                     routingKey: "a-topic",
+                    //                     basicProperties: null,
+                    //                     body: body);
+
+                }
+            }
+
             return View();
         }
 
