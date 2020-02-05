@@ -1,0 +1,18 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "Send";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Send</h1>
+    <div>
+        <a asp-area="" asp-controller="Probe" asp-action="">Probe</a> | <a asp-area="" asp-controller="Probe" asp-action="Receive">Receive</a>
+    </div>
+    <div>
+        <form method="post">
+            <input asp-for="Text" />
+            <input type="submit" value="Send" />
+        </form>
+    </div>
+    <div>@ViewData["Status"]</div>
+</div>

@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Receive";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Receive</h1>
+    <div>
+        <a asp-area="" asp-controller="Probe" asp-action="">Probe</a> | <a asp-area="" asp-controller="Probe" asp-action="Send">Send</a>
+    </div>
+    <div>
+        <form method="post">
+            <input type="submit" name="Receive" />
+        </form>
+    </div>
+    <div>@ViewData["Status"]</div>
+</div>

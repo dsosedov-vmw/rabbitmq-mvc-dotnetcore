@@ -1,9 +1,11 @@
-﻿@model ProbeViewModel
-@{
+﻿@{
     ViewData["Title"] = "Probe";
 }
 
 <div class="text-center">
     <h1 class="display-4">Probe</h1>
-    <p>@Model.Status</p>
+    <div>
+        <a asp-area="" asp-controller="Probe" asp-action="Send">Send</a> | <a asp-area="" asp-controller="Probe" asp-action="Receive">Receive</a>
+    </div>
+    <div>@ViewData["Status"]</div>
 </div>
