@@ -3,7 +3,7 @@ applications:
 - name: rabbitmq-mvc-dotnetcore
   memory: 256M
   instances: 1
-  path: C:/Publish/rabbitmq-mvc-dotnetcore
+  path: src/Web/bin/Release/publish
   command: "cd ${HOME} && exec ./Web --server.urls http://0.0.0.0:${PORT}"
   buildpacks:
   - binary_buildpack
