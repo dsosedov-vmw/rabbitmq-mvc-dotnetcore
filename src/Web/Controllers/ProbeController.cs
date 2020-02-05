@@ -94,13 +94,18 @@ namespace Web.Controllers
                                          autoAck: true,
                                          consumer: consumer);
 
-                    if (consumer.Queue.Dequeue(1000, out BasicDeliverEventArgs ea))
+                    ViewData["Status"] = "No messages found.";
+
+                    var message = string.Empty;
+
+                    while (consumer.Queue.Dequeue(1000, out BasicDeliverEventArgs ea))
                     {
-                        ViewData["Status"] = Encoding.UTF8.GetString(ea.Body);
+                        message += $"{Encoding.UTF8.GetString(ea.Body)}; ";
                     }
-                    else
+
+                    if (!string.IsNullOrWhiteSpace(message))
                     {
-                        ViewData["Status"] = "No messages found.";
+                        ViewData["Status"] = message;
                     }
                 }
             }
