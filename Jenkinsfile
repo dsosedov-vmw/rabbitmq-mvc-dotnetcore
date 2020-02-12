@@ -16,9 +16,13 @@ pipeline {
                 sh 'dotnet test src --no-build'
             }
         }
-        stage('Deploy') {
+        stage('Publish') {
             steps {
                 sh 'dotnet publish src -c Release -f netcoreapp3.1 --self-contained -r linux-x64 -o src/Web/bin/Release/publish'
+            }
+        }
+        stage('Deploy') {
+            steps {
                 sh 'curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&source=github" | tar -zx'
                 sh 'mv cf /usr/local/bin'
 
