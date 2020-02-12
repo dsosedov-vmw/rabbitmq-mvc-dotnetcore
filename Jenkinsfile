@@ -8,12 +8,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'dotnet --version'
+                sh 'dotnet build src'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing...'
+                sh 'dotnet test src --no-build'
             }
         }
         stage('Deploy') {
